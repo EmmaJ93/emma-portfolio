@@ -12,9 +12,10 @@
   <header class="site-header">
     <div class="logo">STUDIO / ARCHIVE</div>
     <nav class="nav-links">
-      <a href="#work" class="active">Work</a>
-      <a href="#contact-sheet">Contact Sheet</a>
-      <a href="#about">About</a>
+      <a href="index.html" class="active">Work</a>
+      <a href="lifecycle.html">Lifecycle & Email</a>
+      <a href="brand-design.html">Brand & Design</a>
+      <a href="photography.html">Photography</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </nav>
   </header>
@@ -31,16 +32,16 @@
       Creative direction, darkroom-inspired photography, and retention marketing campaigns designed to convert without compromising aesthetic integrity.
     </p>
 
-    <!-- Work Filter -->
+    <!-- Work Filter Controls -->
     <div class="filter-bar">
-      <button class="filter-btn active">All Projects</button>
-      <button class="filter-btn">Lifecycle & Email</button>
-      <button class="filter-btn">Brand & Design</button>
-      <button class="filter-btn">Photography</button>
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="lifecycle">Lifecycle & Email</button>
+      <button class="filter-btn" data-filter="brand">Brand & Design</button>
+      <button class="filter-btn" data-filter="photo">Photography</button>
     </div>
   </section>
 
-  <!-- Aperture / Shutter Section Divider (Item 5) -->
+  <!-- Aperture / Shutter Section Divider -->
   <div class="photo-divider">
     <span class="crop-mark">+</span>
     <span class="aspect-stamp">[ 35MM • 1:1 ]</span>
@@ -62,19 +63,16 @@
   <!-- Featured Case Studies Feed -->
   <main id="work" class="case-study-feed">
 
-    <!-- Project 1: Integrated End-to-End Campaign -->
-    <article class="case-card">
+    <!-- Project 1: Lifecycle & Photography Focus -->
+    <article class="case-card" data-category="lifecycle photo">
       <div class="card-visual">
-        <!-- Film Rebate Header Strip (Item 2) -->
         <div class="film-rebate-strip">
           <span class="rebate-code">▶ 24A</span>
           <span class="film-stock">KODAK 400TX</span>
           <span class="exposure-spec">f/2.8 • 1/125s</span>
         </div>
         
-        <!-- Media Container with Viewfinder Reticles (Item 1) -->
         <div class="media-container">
-          <!-- Grease-Pencil Select Stamp (Item 3) -->
           <div class="proof-stamp">● PROOF SELECT</div>
           <div class="media-placeholder">
             <span>[ HERO CAMPAIGN ASSET / PHOTOGRAPHY ]</span>
@@ -94,7 +92,6 @@
           Art-directed editorial studio product photography and engineered a 4-part automated welcome sequence with behavioral segmentation.
         </p>
 
-        <!-- Metrics Display -->
         <div class="metrics-grid">
           <div class="metric-block">
             <span class="metric-val">+38%</span>
@@ -110,21 +107,19 @@
           <span>ROLES:</span> Creative Direction, Macro Photography, Lifecycle Strategy
         </div>
 
-        <a href="#" class="view-case-link">View Case Study & Contact Sheet →</a>
+        <a href="lifecycle.html" class="view-case-link">View Case Study & Contact Sheet →</a>
       </div>
     </article>
 
-    <!-- Project 2: Editorial / Photography Focus -->
-    <article class="case-card reverse">
+    <!-- Project 2: Photography & Brand Design Focus -->
+    <article class="case-card reverse" data-category="photo brand">
       <div class="card-visual">
-        <!-- Film Rebate Header Strip (Item 2) -->
         <div class="film-rebate-strip">
           <span class="rebate-code">▶ 03B</span>
           <span class="film-stock">ILFORD HP5 PLUS</span>
           <span class="exposure-spec">f/4.0 • 1/60s</span>
         </div>
 
-        <!-- Media Container with Viewfinder Reticles (Item 1) -->
         <div class="media-container">
           <div class="proof-stamp">● ARCHIVE SELECT</div>
           <div class="media-placeholder">
@@ -149,18 +144,66 @@
           <span>MEDIUM:</span> Medium Format Film, Darkroom Silver Gelatin Prints
         </div>
 
-        <a href="#" class="view-case-link">Open Gallery & Specimen Notes →</a>
+        <a href="photography.html" class="view-case-link">Open Gallery & Specimen Notes →</a>
+      </div>
+    </article>
+
+    <!-- Project 3: Brand & Design Identity Focus -->
+    <article class="case-card" data-category="brand">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ 12C</span>
+          <span class="film-stock">SYSTEM GUIDE</span>
+          <span class="exposure-spec">BRAND SPECIMEN</span>
+        </div>
+        
+        <div class="media-container">
+          <div class="proof-stamp">● DESIGN SYSTEM</div>
+          <div class="media-placeholder">
+            <span>[ BRAND IDENTITY BOOK & PACKAGING ]</span>
+          </div>
+          <div class="film-stamp">MODULAR DESIGN • TYPOGRAPHY</div>
+        </div>
+      </div>
+      
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge grease-badge">★ Identity Suite</span>
+          <span class="badge">Brand Design</span>
+          <span class="badge">Packaging</span>
+        </div>
+        <h2 class="project-title">Verdant Studio: Visual Identity & Packaging Suite</h2>
+        <p class="project-summary">
+          Developed an organic, darkroom-inspired visual identity for an apothecary brand, including bespoke logomark variants, tactile unboxing collateral, and a digital brand book.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric-block">
+            <span class="metric-val">40+</span>
+            <span class="metric-lbl">Design Assets</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">100%</span>
+            <span class="metric-lbl">Modular Scalability</span>
+          </div>
+        </div>
+
+        <div class="roles-delivered">
+          <span>ROLES:</span> Logo Design, Typography Selection, Printed Packaging
+        </div>
+
+        <a href="brand-design.html" class="view-case-link">View Full Brand System →</a>
       </div>
     </article>
 
   </main>
 
-  <!-- Combined Photography Section: The Darkroom Contact Sheet (Item 4) -->
+  <!-- Combined Photography Section: The Darkroom Contact Sheet -->
   <section id="contact-sheet" class="contact-sheet-section">
     <div class="section-header-wrap">
       <div class="sheet-meta">PROOF SHEET ARCHIVE • ROLL NO. 04-2026</div>
       <h2 class="sheet-title">The Contact Sheet Gallery</h2>
-      <p class="sheet-subtitle">Select raw captures, print proofs, and campaign asset outtakes.</p>
+      <p class="sheet-subtitle">Select raw captures, print proofs, and campaign asset outtakes (Click to inspect).</p>
     </div>
 
     <!-- 6-Frame Contact Sheet Grid with Automatic CSS Frame Numbering -->
@@ -211,5 +254,7 @@
     </div>
   </footer>
 
+  <!-- Script connected at bottom of body -->
+  <script src="script.js"></script>
 </body>
-</html>
+</html> 

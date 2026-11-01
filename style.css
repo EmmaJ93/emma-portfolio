@@ -151,7 +151,7 @@ body::before {
   color: var(--color-sage);
 }
 
-/* Grease-Pencil Underline for Active Nav (Item 3) */
+/* Grease-Pencil Underline for Active Nav */
 .nav-links a.active::after {
   content: "";
   position: absolute;
@@ -241,7 +241,7 @@ body::before {
 }
 
 /* ==========================================================================
-   6. SECTION DIVIDER (APERTURE & CROP MARKS - ITEM 5)
+   6. SECTION DIVIDER (APERTURE & CROP MARKS)
    ========================================================================== */
 .photo-divider {
   position: relative;
@@ -274,7 +274,7 @@ body::before {
 }
 
 /* ==========================================================================
-   7. CASE STUDY CARDS (VIEWFINDER RETICLES & FILM REBATES - ITEMS 1 & 2)
+   7. CASE STUDY CARDS (VIEWFINDER RETICLES & FILM REBATES)
    ========================================================================== */
 .case-study-feed {
   position: relative;
@@ -295,6 +295,7 @@ body::before {
   background-color: var(--color-bark);
   border: 1px solid rgba(181, 161, 152, 0.15);
   padding: 2.5rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .case-card.reverse {
@@ -304,7 +305,7 @@ body::before {
   order: 2;
 }
 
-/* Film Rebate Header Strip (Item 2) */
+/* Film Rebate Header Strip */
 .film-rebate-strip {
   display: flex;
   justify-content: space-between;
@@ -319,7 +320,7 @@ body::before {
   border-bottom: 1px dashed rgba(181, 161, 152, 0.25);
 }
 
-/* Viewfinder Reticles on Media Frame (Item 1) */
+/* Viewfinder Reticles on Media Frame */
 .media-container {
   background: #0d1e15;
   border: 1px solid rgba(152, 181, 167, 0.2);
@@ -353,7 +354,7 @@ body::before {
   border-right: 1.5px solid;
 }
 
-/* Proof Select Stamp (Item 3) */
+/* Proof Select Stamp */
 .proof-stamp {
   position: absolute;
   top: 24px;
@@ -414,7 +415,6 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* Darkroom Grease-Pencil Highlight Badge (Item 3) */
 .badge.grease-badge {
   background-color: var(--color-bark);
   color: var(--color-safelight);
@@ -496,7 +496,7 @@ body::before {
 }
 
 /* ==========================================================================
-   8. CONTACT SHEET GALLERY (ITEMS 3 & 4)
+   8. CONTACT SHEET GALLERY
    ========================================================================== */
 .contact-sheet-section {
   position: relative;
@@ -551,6 +551,7 @@ body::before {
   padding: 10px;
   counter-increment: frame-num;
   transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
 .contact-frame:hover {
@@ -588,7 +589,6 @@ body::before {
   opacity: 0.7;
 }
 
-/* Selected Frame Highlight (Item 3) */
 .select-frame {
   border: 1px solid var(--color-safelight);
 }
@@ -658,7 +658,102 @@ body::before {
 }
 
 /* ==========================================================================
-   10. RESPONSIVE BREAKPOINTS
+   10. LIGHTBOX INSPECTION MODAL (DYNAMIC JS TARGET)
+   ========================================================================== */
+.darkroom-lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.darkroom-lightbox.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(9, 23, 16, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 2;
+  width: min(850px, 90vw);
+  background-color: var(--color-bark);
+  border: 1px solid var(--color-parchment);
+  padding: 2.2rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--color-parchment);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--color-sage);
+}
+
+.lightbox-header {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--color-sage);
+  margin-bottom: 1.2rem;
+  border-bottom: 1px dashed rgba(181, 161, 152, 0.25);
+  padding-bottom: 8px;
+}
+
+.lightbox-viewer {
+  background: #0d1e15;
+  border: 1px solid rgba(152, 181, 167, 0.2);
+  padding: 16px;
+  margin-bottom: 1.2rem;
+}
+
+.lightbox-placeholder {
+  height: 420px;
+  background: var(--color-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lightbox-placeholder span {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: var(--color-sage);
+}
+
+.lightbox-meta {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--color-parchment);
+  opacity: 0.8;
+  text-align: right;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 900px) {
   .case-card,
@@ -680,4 +775,4 @@ body::before {
   .photo-divider {
     display: none;
   }
-}`
+} 

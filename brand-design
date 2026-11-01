@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand & Visual Design | Archive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">STUDIO / ARCHIVE</a></div>
+    <nav class="nav-links">
+      <a href="index.html">Work</a>
+      <a href="lifecycle.html">Lifecycle & Email</a>
+      <a href="brand-design.html" class="active">Brand & Design</a>
+      <a href="photography.html">Photography</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-meta">IDENTITY • EDITORIAL SYSTEMS • DIGITAL COLLATERAL</div>
+    <h1 class="hero-title">Brand Identity & Digital Design</h1>
+    <p class="hero-lead">
+      Crafting disciplined visual languages, design guidelines, and cohesive campaign creative systems built for both print permanence and digital responsiveness.
+    </p>
+
+    <div class="filter-bar">
+      <button class="filter-btn active">All Work</button>
+      <button class="filter-btn">Identity Systems</button>
+      <button class="filter-btn">Digital Collateral</button>
+      <button class="filter-btn">Packaging & Print</button>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="photo-divider">
+    <span class="crop-mark">+</span>
+    <span class="aspect-stamp">[ SYSTEM / GRID HIERARCHY ]</span>
+    <span class="crop-mark">+</span>
+  </div>
+
+  <!-- Projects List -->
+  <main class="case-study-feed">
+
+    <article class="case-card">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ BRAND 01</span>
+          <span class="film-stock">IDENTITY SPECIMEN</span>
+          <span class="exposure-spec">STYLE GUIDE VOL. 1</span>
+        </div>
+        <div class="media-container">
+          <div class="proof-stamp">● IDENTITY SELECT</div>
+          <div class="media-placeholder">
+            <span>[ BRAND IDENTITY BOOK & PACKAGING SYSTEM ]</span>
+          </div>
+          <div class="film-stamp">TYPOGRAPHY • LOGOMARK • PALETTE</div>
+        </div>
+      </div>
+
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge grease-badge">★ Comprehensive Rebrand</span>
+          <span class="badge">Art Direction</span>
+          <span class="badge">Packaging</span>
+        </div>
+        <h2 class="project-title">Verdant Studio: Visual Identity & Packaging Suite</h2>
+        <p class="project-summary">
+          Developed an organic, darkroom-inspired visual identity for an apothecary brand, including bespoke logomark variants, tactile unboxing collateral, and a digital brand book.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric-block">
+            <span class="metric-val">40+</span>
+            <span class="metric-lbl">Design System Assets</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">100%</span>
+            <span class="metric-lbl">Modular Scalability</span>
+          </div>
+        </div>
+
+        <div class="roles-delivered">
+          <span>DELIVERABLES:</span> Logo Suites, Custom Type Treatments, Printed Materials, Social & Campaign Toolkits
+        </div>
+
+        <a href="#" class="view-case-link">View Full Brand System →</a>
+      </div>
+    </article>
+
+    <article class="case-card reverse">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ BRAND 02</span>
+          <span class="film-stock">CAMPAIGN SUITE</span>
+          <span class="exposure-spec">OMNICHANNEL ROLLOUT</span>
+        </div>
+        <div class="media-container">
+          <div class="media-placeholder">
+            <span>[ DIGITAL ADS & MULTI-SCREEN COLLATERAL ]</span>
+          </div>
+          <div class="film-stamp">CAMPAIGN DESIGN • AD ASSETS</div>
+        </div>
+      </div>
+
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge">Marketing Collateral</span>
+          <span class="badge">Paid Media</span>
+        </div>
+        <h2 class="project-title">Equinox Product Launch Campaign Collateral</h2>
+        <p class="project-summary">
+          Cross-platform creative execution spanning high-impact paid social assets, landing page UI components, and coordinated marketing graphics designed to maintain visual fidelity under conversion pressure.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric-block">
+            <span class="metric-val">2.4x</span>
+            <span class="metric-lbl">ROAS vs. Prior Launch</span>
+          </div>
+          <div class="metric-block">
+            <span class="metric-val">18</span>
+            <span class="metric-lbl">Delivered Variants</span>
+          </div>
+        </div>
+
+        <div class="roles-delivered">
+          <span>DELIVERABLES:</span> Static & Motion Social Graphics, Conversion Landing Page Design, Ad Variations
+        </div>
+
+        <a href="#" class="view-case-link">Explore Campaign Assets →</a>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <h3>Need a comprehensive visual identity or creative system?</h3>
+        <p>Available for select brand design systems and campaign creative direction.</p>
+      </div>
+      <a href="mailto:your-email@example.com" class="footer-btn">Initiate Dialogue</a>
+    </div>
+  </footer>
+
+</body>
+</html>
