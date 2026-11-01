@@ -1,0 +1,683 @@
+/* ==========================================================================
+   1. LOCAL FONT REGISTRATION (@font-face)
+   ========================================================================== */
+
+/* Alice (Display / Serif Titles) */
+@font-face {
+  font-family: 'Alice';
+  src: url('fonts/Alice-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* KoHo (Body / Technical / Navigation / Directory) */
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KoHo';
+  src: url('fonts/KoHo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   2. DESIGN TOKENS & VARIABLES
+   ========================================================================== */
+:root {
+  --color-forest:     #123524; /* Canvas base */
+  --color-bark:       #361D12; /* Solid card surface */
+  --color-plum:       #361219; /* Accent badges, frames, darkroom depth */
+  --color-sage:       #98B5A7; /* Highlights, metrics, action states */
+  --color-parchment:  #B5A198; /* Body text & subtle borders */
+  --color-safelight:  #b33939; /* Darkroom grease-pencil wax red */
+  
+  --font-display: 'Alice', Georgia, serif;
+  --font-body:    'KoHo', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ==========================================================================
+   3. BASE RESET & AMBIENT CANVAS
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-forest);
+  color: var(--color-parchment);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Ambient Darkroom Background Gradient (Behind All Content) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(18, 53, 36, 0.4), rgba(54, 18, 25, 0.55));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   4. NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 6%;
+  border-bottom: 1px solid rgba(181, 161, 152, 0.15);
+}
+
+.logo {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: var(--color-sage);
+}
+
+.nav-links a {
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--color-parchment);
+  margin-left: 2rem;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-sage);
+}
+
+/* Grease-Pencil Underline for Active Nav (Item 3) */
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-safelight);
+  border-radius: 1px;
+}
+
+.nav-cta {
+  border: 1px solid var(--color-parchment);
+  padding: 6px 14px;
+}
+
+/* ==========================================================================
+   5. HERO SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 6% 3rem;
+  max-width: 1000px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--color-sage);
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.aperture-glyph {
+  color: var(--color-parchment);
+  opacity: 0.5;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 1.8rem;
+}
+
+.hero-lead {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.3rem;
+  max-width: 720px;
+  color: var(--color-parchment);
+  margin-bottom: 3.5rem;
+}
+
+/* Filter Controls */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-btn {
+  background: transparent;
+  color: var(--color-parchment);
+  border: 1px solid rgba(181, 161, 152, 0.3);
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-bark);
+  color: var(--color-sage);
+  border-color: var(--color-sage);
+}
+
+/* ==========================================================================
+   6. SECTION DIVIDER (APERTURE & CROP MARKS - ITEM 5)
+   ========================================================================== */
+.photo-divider {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 2.5rem 6%;
+  color: var(--color-parchment);
+  opacity: 0.6;
+}
+
+.crop-mark {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-sage);
+}
+
+.aspect-stamp {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.aperture-icon {
+  display: flex;
+  align-items: center;
+  color: var(--color-sage);
+}
+
+/* ==========================================================================
+   7. CASE STUDY CARDS (VIEWFINDER RETICLES & FILM REBATES - ITEMS 1 & 2)
+   ========================================================================== */
+.case-study-feed {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 6% 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.case-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background-color: var(--color-bark);
+  border: 1px solid rgba(181, 161, 152, 0.15);
+  padding: 2.5rem;
+}
+
+.case-card.reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+.case-card.reverse .card-visual {
+  order: 2;
+}
+
+/* Film Rebate Header Strip (Item 2) */
+.film-rebate-strip {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--color-parchment);
+  opacity: 0.75;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed rgba(181, 161, 152, 0.25);
+}
+
+/* Viewfinder Reticles on Media Frame (Item 1) */
+.media-container {
+  background: #0d1e15;
+  border: 1px solid rgba(152, 181, 167, 0.2);
+  padding: 18px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.media-container::before,
+.media-container::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-sage);
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.media-container::before {
+  top: 6px;
+  left: 6px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.media-container::after {
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Proof Select Stamp (Item 3) */
+.proof-stamp {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: var(--color-safelight);
+  background: rgba(13, 30, 21, 0.85);
+  border: 1px solid var(--color-safelight);
+  padding: 2px 8px;
+}
+
+.media-placeholder {
+  height: 380px;
+  background-color: var(--color-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.media-placeholder span {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--color-sage);
+}
+
+.film-stamp {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: rgba(181, 161, 152, 0.7);
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* Card Information & Badges */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  background-color: var(--color-plum);
+  color: var(--color-parchment);
+  padding: 4px 10px;
+  letter-spacing: 1px;
+}
+
+/* Darkroom Grease-Pencil Highlight Badge (Item 3) */
+.badge.grease-badge {
+  background-color: var(--color-bark);
+  color: var(--color-safelight);
+  border: 1px solid var(--color-safelight);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.project-summary {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--color-parchment);
+  margin-bottom: 2rem;
+}
+
+/* Metric Display */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  margin-bottom: 1.5rem;
+  border-top: 1px solid rgba(181, 161, 152, 0.15);
+  border-bottom: 1px solid rgba(181, 161, 152, 0.15);
+}
+
+.metric-val {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--color-sage);
+}
+
+.metric-lbl {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--color-parchment);
+  letter-spacing: 1px;
+}
+
+.roles-delivered {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  color: var(--color-sage);
+}
+
+.roles-delivered span {
+  font-weight: 600;
+  color: var(--color-parchment);
+}
+
+.view-case-link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-bottom: 1px solid var(--color-sage);
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.view-case-link:hover {
+  color: var(--color-sage);
+  border-color: var(--color-safelight);
+}
+
+/* ==========================================================================
+   8. CONTACT SHEET GALLERY (ITEMS 3 & 4)
+   ========================================================================== */
+.contact-sheet-section {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 6% 6rem;
+  border-top: 1px solid rgba(181, 161, 152, 0.15);
+}
+
+.section-header-wrap {
+  margin-bottom: 2.5rem;
+}
+
+.sheet-meta {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--color-sage);
+  margin-bottom: 0.5rem;
+}
+
+.sheet-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.sheet-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--color-parchment);
+}
+
+/* Darkroom Contact Sheet Grid */
+.contact-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  background-color: #08140e;
+  border: 1px solid rgba(181, 161, 152, 0.2);
+  padding: 24px;
+  counter-reset: frame-num;
+}
+
+.contact-frame {
+  position: relative;
+  background: var(--color-plum);
+  border: 1px solid rgba(181, 161, 152, 0.1);
+  padding: 10px;
+  counter-increment: frame-num;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-frame:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-sage);
+}
+
+/* Automatic CSS Counter Stamp: EXP 01, EXP 02... */
+.contact-frame::before {
+  content: "EXP " counter(frame-num, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: rgba(181, 161, 152, 0.6);
+  margin-bottom: 6px;
+}
+
+.contact-thumb {
+  height: 180px;
+  background-color: #102117;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-thumb span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--color-parchment);
+  opacity: 0.7;
+}
+
+/* Selected Frame Highlight (Item 3) */
+.select-frame {
+  border: 1px solid var(--color-safelight);
+}
+
+.grease-pencil-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: var(--color-safelight);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(181, 161, 152, 0.15);
+  padding: 5rem 6%;
+  background-color: var(--color-bark);
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-wrap h3 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.footer-wrap p {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.footer-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: var(--color-forest);
+  color: var(--color-sage);
+  border: 1px solid var(--color-sage);
+  padding: 14px 28px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.footer-btn:hover {
+  background-color: var(--color-sage);
+  color: var(--color-forest);
+}
+
+/* ==========================================================================
+   10. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .case-card,
+  .case-card.reverse {
+    grid-template-columns: 1fr;
+  }
+  .case-card.reverse .card-visual {
+    order: 0;
+  }
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    margin-left: 0;
+    margin-right: 1.2rem;
+  }
+  .photo-divider {
+    display: none;
+  }
+}`
