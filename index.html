@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Visuals, Strategy & Lifecycle</title>
+  <title>Emma Roy | Lifecycle, Brand & Photography Portfolio</title>
   <meta name="description" content="Multidisciplinary portfolio: email lifecycle and retention marketing, brand and visual design, and analog editorial photography." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Portfolio | Visuals, Strategy & Lifecycle" />
+  <meta property="og:title" content="Emma Roy | Lifecycle, Brand & Photography Portfolio" />
   <meta property="og:description" content="Case studies spanning art direction, photography, email design and behavioral CRM automation." />
-  <meta name="theme-color" content="#123524" />
+  <meta name="theme-color" content="#F5F2EC" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,7 +16,10 @@
 
   <!-- Navigation -->
   <header class="site-header">
-    <div class="logo"><a href="index.html">STUDIO / ARCHIVE</a></div>
+    <a href="index.html" class="logo">
+      <span class="logo-name">Emma Roy</span>
+      <span class="logo-role">Marketing Specialist · Photographer · Designer</span>
+    </a>
     <nav class="nav-links">
       <a href="index.html" class="active">Work</a>
       <a href="lifecycle.html">Lifecycle & Email</a>
@@ -27,24 +30,60 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-meta">
-      <span>EST. 35MM / ANALOG & DIGITAL</span>
-      <span class="aperture-glyph">◎</span>
-      <span>DATA-DRIVEN LIFECYCLE</span>
-    </div>
-    <h1 class="hero-title">Visual craft meets full-funnel lifecycle strategy.</h1>
-    <p class="hero-lead">
-      Creative direction, darkroom-inspired photography, and retention marketing campaigns designed to convert without compromising aesthetic integrity.
-    </p>
+  <section class="hero-section hero-home">
+    <div class="hero-main">
+      <div class="hero-meta">
+        <span>Lifecycle Marketing</span>
+        <span class="aperture-glyph">◎</span>
+        <span>Brand Design</span>
+        <span class="aperture-glyph">◎</span>
+        <span>Photography</span>
+      </div>
+      <h1 class="hero-title">Visual craft meets full-funnel lifecycle strategy.</h1>
+      <p class="hero-lead">
+        Creative direction, darkroom-inspired photography, and retention marketing campaigns designed to convert without compromising aesthetic integrity.
+      </p>
 
-    <!-- Work Filter Controls -->
-    <div class="filter-bar">
-      <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
-      <button type="button" class="filter-btn" data-filter="lifecycle">Lifecycle & Email</button>
-      <button type="button" class="filter-btn" data-filter="brand">Brand & Design</button>
-      <button type="button" class="filter-btn" data-filter="photo">Photography</button>
+      <!-- Work Filter Controls -->
+      <div class="filter-bar" aria-label="Filter case studies">
+        <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+        <button type="button" class="filter-btn" data-filter="lifecycle">Lifecycle & Email</button>
+        <button type="button" class="filter-btn" data-filter="brand">Brand & Design</button>
+        <button type="button" class="filter-btn" data-filter="photo">Photography</button>
+      </div>
     </div>
+
+    <!-- Discipline Index (contents card) -->
+    <nav class="discipline-index" aria-label="Disciplines">
+      <div class="index-head">
+        <span>Index</span>
+        <span>Roll 04 / 2026</span>
+      </div>
+      <a href="lifecycle.html" class="index-row">
+        <span class="index-num">01</span>
+        <span class="index-body">
+          <span class="index-title">Lifecycle & Email</span>
+          <span class="index-desc">Automated flows, segmentation, ESP builds</span>
+        </span>
+        <span class="index-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="brand-design.html" class="index-row">
+        <span class="index-num">02</span>
+        <span class="index-body">
+          <span class="index-title">Brand & Design</span>
+          <span class="index-desc">Identity systems, packaging, campaign collateral</span>
+        </span>
+        <span class="index-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="photography.html" class="index-row">
+        <span class="index-num">03</span>
+        <span class="index-body">
+          <span class="index-title">Photography</span>
+          <span class="index-desc">Editorial series, still life, darkroom prints</span>
+        </span>
+        <span class="index-arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
   </section>
 
   <!-- Aperture / Shutter Section Divider -->
@@ -68,6 +107,11 @@
 
   <!-- Featured Case Studies Feed -->
   <main id="work" class="case-study-feed">
+
+    <header class="feed-header">
+      <h2 class="feed-title">Selected Work</h2>
+      <span class="feed-count">03 Case Studies</span>
+    </header>
 
     <!-- Project 1: Lifecycle & Photography Focus -->
     <article class="case-card" data-category="lifecycle photo">
@@ -257,6 +301,10 @@
         <p>Available for select creative direction, photography, and email lifecycle consulting.</p>
       </div>
       <a href="mailto:emmajaderoy@gmail.com" class="footer-btn">Initiate Dialogue</a>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Emma Roy</span>
+      <a href="mailto:emmajaderoy@gmail.com">emmajaderoy@gmail.com</a>
     </div>
   </footer>
 
