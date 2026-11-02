@@ -141,6 +141,11 @@ body.lightbox-open {
   overflow: hidden;
 }
 
+/* The hidden attribute always wins over component display rules */
+[hidden] {
+  display: none !important;
+}
+
 ::selection {
   background: var(--color-forest);
   color: var(--paper);
@@ -520,13 +525,14 @@ body.lightbox-open {
 }
 
 /* Filter states (toggled by script.js) */
-.case-card.is-filtered-out {
-  opacity: 0;
-  transform: translateY(12px);
+.filter-section {
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.case-card[hidden] {
-  display: none;
+.case-card.is-filtered-out,
+.filter-section.is-filtered-out {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 .feed-empty {
@@ -617,6 +623,7 @@ body.lightbox-open {
 .media-container img {
   display: block;
   width: 100%;
+  height: auto; /* let aspect-ratio win over the HTML height attribute */
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
@@ -781,6 +788,19 @@ body.lightbox-open {
   color: var(--ink-muted);
 }
 
+.inline-link {
+  color: var(--color-forest);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.inline-link:hover {
+  text-decoration-color: var(--color-safelight);
+}
+
 .contact-sheet {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -841,6 +861,7 @@ body.lightbox-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 28%; /* bias crop upward so portrait-orientation faces stay in frame */
 }
 
 .contact-thumb span {
@@ -1013,10 +1034,42 @@ body.lightbox-open {
 }
 
 .lightbox-viewer {
+  position: relative;
   background: var(--color-forest);
   padding: 14px;
   margin-bottom: 1rem;
 }
+
+.lightbox-img {
+  display: block;
+  width: 100%;
+  height: min(68vh, 640px);
+  object-fit: contain;
+  background: var(--color-forest-deep);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.6rem;
+  height: 2.6rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(251, 250, 246, 0.9);
+  color: var(--color-forest);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lightbox-nav:hover {
+  background: var(--paper-raised);
+  color: var(--color-safelight);
+}
+
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
 
 .lightbox-placeholder {
   height: min(420px, 55vh);
@@ -1033,10 +1086,24 @@ body.lightbox-open {
 }
 
 .lightbox-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.5rem;
+}
+
+.lightbox-caption {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.lightbox-spec {
   font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-muted);
-  text-align: right;
 }
 
 /* ==========================================================================

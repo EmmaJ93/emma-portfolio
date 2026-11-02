@@ -1,7 +1,7 @@
 /* ==========================================================================
    PORTFOLIO INTERACTIVE CONTROLLER
-   - Category filtering (any page with .filter-btn + .case-card)
-   - Darkroom Loupe / Proof Inspector modal (any page with .contact-frame)
+   - Category filtering (any page with .filter-btn + .case-card / .filter-section)
+   - Darkroom Loupe / Proof Inspector lightbox (any page with .contact-frame)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,36 +10,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const FADE_MS = 250;
 
   /* ------------------------------------------------------------------------
-     1. WORK CATEGORY FILTERING
+     1. CATEGORY FILTERING
+     Filters .case-card items and any .filter-section (e.g. a series proof
+     sheet) by their data-category against the button's data-filter.
      ------------------------------------------------------------------------ */
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.case-card');
+  const filterItems = document.querySelectorAll('.case-card, .filter-section');
   const feed = document.querySelector('.case-study-feed');
 
-  if (filterButtons.length > 0 && projectCards.length > 0) {
-    // Empty-state message, shown when a filter matches no cards
+  if (filterButtons.length > 0 && filterItems.length > 0) {
     const emptyState = document.createElement('p');
     emptyState.className = 'feed-empty';
     emptyState.textContent = 'Nothing on this roll yet. New work in this category is being developed.';
     emptyState.hidden = true;
-    feed.appendChild(emptyState);
+    feed?.appendChild(emptyState);
 
-    // Pending hide timers per card, so rapid clicks can't hide a card
+    // Pending hide timers per item, so rapid clicks can't hide an item
     // that a later click decided to show.
     const hideTimers = new Map();
 
-    const showCard = (card) => {
-      clearTimeout(hideTimers.get(card));
-      card.hidden = false;
-      // Next frame so the browser registers the start state before fading in
-      requestAnimationFrame(() => card.classList.remove('is-filtered-out'));
+    const showItem = (item) => {
+      clearTimeout(hideTimers.get(item));
+      item.hidden = false;
+      requestAnimationFrame(() => item.classList.remove('is-filtered-out'));
     };
 
-    const hideCard = (card) => {
-      clearTimeout(hideTimers.get(card));
-      card.classList.add('is-filtered-out');
+    const hideItem = (item) => {
+      clearTimeout(hideTimers.get(item));
+      item.classList.add('is-filtered-out');
       const delay = reducedMotion.matches ? 0 : FADE_MS;
-      hideTimers.set(card, setTimeout(() => { card.hidden = true; }, delay));
+      hideTimers.set(item, setTimeout(() => { item.hidden = true; }, delay));
     };
 
     filterButtons.forEach(button => {
@@ -54,25 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
         button.setAttribute('aria-pressed', 'true');
 
         const selectedFilter = button.dataset.filter || 'all';
-        let visibleCount = 0;
+        let visibleCards = 0;
 
-        projectCards.forEach(card => {
-          const categories = (card.dataset.category || '').trim().split(/\s+/);
+        filterItems.forEach(item => {
+          const categories = (item.dataset.category || '').trim().split(/\s+/);
           if (selectedFilter === 'all' || categories.includes(selectedFilter)) {
-            showCard(card);
-            visibleCount++;
+            showItem(item);
+            if (item.classList.contains('case-card')) visibleCards++;
           } else {
-            hideCard(card);
+            hideItem(item);
           }
         });
 
-        emptyState.hidden = visibleCount > 0;
+        emptyState.hidden = visibleCards > 0;
       });
     });
   }
 
   /* ------------------------------------------------------------------------
      2. DARKROOM CONTACT SHEET LIGHTBOX INSPECTOR
+     Frame markup:
+       <button class="contact-frame" data-full="large.webp"
+               data-caption="..." data-spec="...">
+         <span class="contact-thumb"><img src="small.webp" alt="..."></span>
+       </button>
+     Frames without an <img> fall back to the placeholder text.
      ------------------------------------------------------------------------ */
   const contactFrames = document.querySelectorAll('.contact-frame');
 
@@ -81,20 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.className = 'darkroom-lightbox';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-labelledby', 'lightbox-title');
+    modal.setAttribute('aria-labelledby', 'lightbox-caption');
     modal.innerHTML = `
       <div class="lightbox-overlay"></div>
       <div class="lightbox-content">
         <button type="button" class="lightbox-close" aria-label="Close inspector">✕</button>
         <div class="lightbox-header">
-          <span class="lightbox-code">FRAME INSPECTOR • PROOF EXAMINATION</span>
+          <span class="lightbox-code">FRAME INSPECTOR</span>
         </div>
         <div class="lightbox-viewer">
+          <img class="lightbox-img" alt="" hidden />
           <div class="lightbox-placeholder">
-            <span class="lightbox-title" id="lightbox-title">[ SPECIMEN PREVIEW ]</span>
+            <span class="lightbox-title">[ SPECIMEN PREVIEW ]</span>
           </div>
+          <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous frame">←</button>
+          <button type="button" class="lightbox-nav lightbox-next" aria-label="Next frame">→</button>
         </div>
         <div class="lightbox-meta">
+          <span class="lightbox-caption" id="lightbox-caption"></span>
           <span class="lightbox-spec"></span>
         </div>
       </div>
@@ -102,25 +112,74 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(modal);
 
     const closeBtn = modal.querySelector('.lightbox-close');
+    const prevBtn = modal.querySelector('.lightbox-prev');
+    const nextBtn = modal.querySelector('.lightbox-next');
     const overlay = modal.querySelector('.lightbox-overlay');
+    const lbImg = modal.querySelector('.lightbox-img');
+    const placeholder = modal.querySelector('.lightbox-placeholder');
     const titleTarget = modal.querySelector('.lightbox-title');
     const codeTarget = modal.querySelector('.lightbox-code');
+    const captionTarget = modal.querySelector('.lightbox-caption');
     const specTarget = modal.querySelector('.lightbox-spec');
-    const sheetMeta = document.querySelector('.sheet-meta');
 
     let lastTrigger = null;
+    let currentFrame = null;
 
-    const openModal = (frame, index) => {
+    // Frames in the same sheet as the given frame (for prev/next)
+    const siblingsOf = (frame) =>
+      Array.from(frame.parentElement.querySelectorAll('.contact-frame'));
+
+    const frameLabel = (frame) => {
+      const img = frame.querySelector('img');
+      return frame.dataset.caption
+        || img?.alt
+        || frame.querySelector('.contact-thumb span')?.textContent.trim()
+        || 'Proof';
+    };
+
+    const showFrame = (frame) => {
+      currentFrame = frame;
+      const sheetFrames = siblingsOf(frame);
+      const index = sheetFrames.indexOf(frame);
       const expNumber = String(index + 1).padStart(2, '0');
-      const thumbText = frame.querySelector('.contact-thumb span')?.textContent.trim() || '[ SPECIMEN ]';
       const isSelect = frame.classList.contains('select-frame');
+      const section = frame.closest('section');
+      const sheetMeta = section?.querySelector('.sheet-meta')?.textContent.trim();
+      const thumbImg = frame.querySelector('img');
 
-      titleTarget.textContent = thumbText;
-      codeTarget.textContent = `EXP ${expNumber} • DARKROOM SPECIMEN INSPECTOR`;
-      specTarget.textContent = `STATUS: ${isSelect ? 'PROOF SELECT' : 'CONTACT PROOF'}`
-        + (sheetMeta ? ` • ${sheetMeta.textContent.trim()}` : '');
+      if (thumbImg) {
+        lbImg.src = frame.dataset.full || thumbImg.src;
+        lbImg.alt = thumbImg.alt;
+        lbImg.hidden = false;
+        placeholder.hidden = true;
+      } else {
+        lbImg.hidden = true;
+        lbImg.removeAttribute('src');
+        placeholder.hidden = false;
+        titleTarget.textContent = frameLabel(frame);
+      }
 
+      codeTarget.textContent = `EXP ${expNumber} / ${String(sheetFrames.length).padStart(2, '0')}`
+        + (isSelect ? ' • PROOF SELECT' : '')
+        + (sheetMeta ? ` • ${sheetMeta}` : '');
+      captionTarget.textContent = frameLabel(frame);
+      specTarget.textContent = frame.dataset.spec || '';
+
+      const single = sheetFrames.length < 2;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+    };
+
+    const step = (dir) => {
+      if (!currentFrame) return;
+      const sheetFrames = siblingsOf(currentFrame);
+      const i = sheetFrames.indexOf(currentFrame);
+      showFrame(sheetFrames[(i + dir + sheetFrames.length) % sheetFrames.length]);
+    };
+
+    const openModal = (frame) => {
       lastTrigger = frame;
+      showFrame(frame);
       modal.classList.add('is-active');
       document.body.classList.add('lightbox-open');
       closeBtn.focus();
@@ -130,27 +189,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!modal.classList.contains('is-active')) return;
       modal.classList.remove('is-active');
       document.body.classList.remove('lightbox-open');
-      lastTrigger?.focus();
+      // Return focus to the frame now on screen (may differ after prev/next)
+      (currentFrame || lastTrigger)?.focus();
     };
 
     closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', closeModal);
+    prevBtn.addEventListener('click', () => step(-1));
+    nextBtn.addEventListener('click', () => step(1));
 
     document.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('is-active')) return;
       if (e.key === 'Escape') {
         closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        step(-1);
+      } else if (e.key === 'ArrowRight') {
+        step(1);
       } else if (e.key === 'Tab') {
-        // Only one focusable control inside the dialog: keep focus on it
+        // Keep focus cycling inside the dialog
+        const focusables = [closeBtn, prevBtn, nextBtn].filter(b => !b.hidden);
+        const i = focusables.indexOf(document.activeElement);
+        const next = e.shiftKey
+          ? focusables[(i - 1 + focusables.length) % focusables.length]
+          : focusables[(i + 1) % focusables.length];
         e.preventDefault();
-        closeBtn.focus();
+        next.focus();
       }
     });
 
-    contactFrames.forEach((frame, index) => {
-      const label = frame.querySelector('.contact-thumb span')?.textContent.trim() || 'proof';
-      frame.setAttribute('aria-label', `Inspect exposure ${index + 1}: ${label}`);
-      frame.addEventListener('click', () => openModal(frame, index));
+    contactFrames.forEach((frame) => {
+      const index = siblingsOf(frame).indexOf(frame);
+      frame.setAttribute('aria-label', `Inspect exposure ${index + 1}: ${frameLabel(frame)}`);
+      frame.addEventListener('click', () => openModal(frame));
     });
   }
 

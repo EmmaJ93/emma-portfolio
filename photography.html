@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photography & Archival Prints | Emma Roy</title>
-  <meta name="description" content="Analog and digital photography: studio still life, editorial print series, and silver gelatin darkroom proofs." />
+  <title>Photography | Emma Roy</title>
+  <meta name="description" content="Photography by Emma Roy: wedding coverage, newborn and family portraits, pet and animal portraits, and long-exposure landscape and cityscape work." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Photography & Archival Prints | Emma Roy" />
-  <meta property="og:description" content="Studio still life, editorial print series, and silver gelatin darkroom proofs." />
+  <meta property="og:title" content="Photography | Emma Roy" />
+  <meta property="og:description" content="Wedding coverage, newborn and family portraits, pets and animals, and long-exposure landscape and cityscape work." />
   <meta name="theme-color" content="#F5F2EC" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
@@ -31,26 +31,35 @@
 
   <!-- Hero Section -->
   <section class="hero-section">
-    <div class="hero-meta">SILVER GELATIN • 35MM / 120 MEDIUM FORMAT • STUDIO STILL LIFE</div>
-    <h1 class="hero-title">Photographic Archive</h1>
+    <div class="hero-meta">
+      <span>Weddings</span>
+      <span class="aperture-glyph">◎</span>
+      <span>Newborn & Family</span>
+      <span class="aperture-glyph">◎</span>
+      <span>Pets & Animals</span>
+      <span class="aperture-glyph">◎</span>
+      <span>Landscapes & Cityscapes</span>
+    </div>
+    <h1 class="hero-title">Photography</h1>
     <p class="hero-lead">
-      Analog and digital documentation exploring low-key studio lighting, tactile organic textures, and environmental portraiture rooted in darkroom craft.
+      Wedding days, newborn and family portraits, pets with personality, and long-exposure landscape and cityscape work: an eye for natural light, quiet moments, and the details people want to remember.
     </p>
 
-    <div class="filter-bar">
-      <button type="button" class="filter-btn active" data-filter="all">All Proofs</button>
-      <button type="button" class="filter-btn" data-filter="commercial">Commercial & Product</button>
-      <button type="button" class="filter-btn" data-filter="editorial">Editorial Series</button>
-      <button type="button" class="filter-btn" data-filter="botanical">Landscape & Botanical</button>
+    <div class="filter-bar" aria-label="Filter photography series">
+      <button type="button" class="filter-btn active" data-filter="all">All Series</button>
+      <button type="button" class="filter-btn" data-filter="weddings">Weddings</button>
+      <button type="button" class="filter-btn" data-filter="family">Newborn & Family</button>
+      <button type="button" class="filter-btn" data-filter="animals">Pets & Animals</button>
+      <button type="button" class="filter-btn" data-filter="landscape">Landscapes & Cityscapes</button>
     </div>
   </section>
 
   <!-- Section Divider with Ground Glass Marks -->
   <div class="photo-divider">
     <span class="crop-mark">+</span>
-    <span class="aspect-stamp">[ 120 FORMAT • 6x7 CM ]</span>
+    <span class="aspect-stamp">[ CANON 5D MK II / MK IV • 3:2 ]</span>
     <span class="aperture-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <circle cx="12" cy="12" r="10"/>
         <line x1="14.31" y1="8" x2="20.05" y2="17.94"/>
         <line x1="9.69" y1="8" x2="21.17" y2="8"/>
@@ -60,93 +69,355 @@
         <line x1="16.62" y1="12" x2="10.88" y2="21.94"/>
       </svg>
     </span>
-    <span class="aspect-stamp">[ ARCHIVAL CONTACT PRINTS ]</span>
+    <span class="aspect-stamp">[ 04 SERIES • 40 FRAMES ]</span>
     <span class="crop-mark">+</span>
   </div>
 
-  <!-- Featured Photo Series -->
+  <!-- Photo Series -->
   <main class="case-study-feed">
 
-    <article class="case-card" data-category="commercial botanical">
+    <!-- Series 01: Weddings -->
+    <article class="case-card" data-category="weddings">
       <div class="card-visual">
         <div class="film-rebate-strip">
-          <span class="rebate-code">▶ 01A</span>
-          <span class="film-stock">FUJIFILM PROVIA 100F</span>
-          <span class="exposure-spec">f/5.6 • 1/250s • STUDIO STROBE</span>
+          <span class="rebate-code">▶ ROLL 01</span>
+          <span class="film-stock">WEDDING COVERAGE</span>
+          <span class="exposure-spec">CEREMONY → RECEPTION</span>
         </div>
         <div class="media-container">
-          <div class="proof-stamp">● SELECT PRINT</div>
-          <div class="media-placeholder">
-            <span>[ STUDIO STILL LIFE / PRODUCT SPECIMEN ]</span>
-          </div>
-          <div class="film-stamp">COMMERCIAL CAPTURE • ART DIRECTED</div>
+          <div class="proof-stamp">● PROOF SELECT</div>
+          <img src="images/web/weddings/wedding-golden-hour-lg.webp"
+               alt="Bride and groom kissing in a field, backlit by golden-hour sun"
+               width="1600" height="1066" decoding="async" />
+          <div class="film-stamp">GOLDEN HOUR • COUPLE PORTRAITS</div>
         </div>
       </div>
 
       <div class="card-info">
         <div class="tag-row">
-          <span class="badge grease-badge">★ Commercial</span>
-          <span class="badge">Still Life</span>
-          <span class="badge">Brand Asset</span>
+          <span class="badge grease-badge">★ Client Work</span>
+          <span class="badge">Weddings</span>
+          <span class="badge">Event Coverage</span>
         </div>
-        <h2 class="project-title">Textile & Botanical Macro Series</h2>
+        <h2 class="project-title">Wedding Days: Ceremony to Last Dance</h2>
         <p class="project-summary">
-          A high-resolution study of raw linen, earth pigments, and pressed botanicals shot under hard directional shadows for e-commerce hero placements and print editorial spreads.
+          Full-day wedding coverage across barns, greenhouses and lakeside docks: candid ceremony moments, golden-hour couple portraits, family dances, and the details couples spend months planning.
         </p>
 
-        <div class="metrics-grid">
-          <div class="metric-block">
-            <span class="metric-val">100MP</span>
-            <span class="metric-lbl">Capture Resolution</span>
-          </div>
-          <div class="metric-block">
-            <span class="metric-val">3:2</span>
-            <span class="metric-lbl">Native Aspect Ratio</span>
-          </div>
+        <div class="roles-delivered">
+          <span>COVERAGE:</span> Getting Ready, Ceremony, Couple & Party Portraits, Details, Reception
         </div>
+
+        <a href="#roll-weddings" class="view-case-link">View the Wedding Proof Sheet ↓</a>
+      </div>
+    </article>
+
+    <!-- Series 02: Newborn & Family -->
+    <article class="case-card reverse" data-category="family">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ ROLL 02</span>
+          <span class="film-stock">CANON 5D MK IV • EF 100MM</span>
+          <span class="exposure-spec">f/3.2 • 1/2000s • ISO 800</span>
+        </div>
+        <div class="media-container">
+          <div class="proof-stamp">● PROOF SELECT</div>
+          <img src="images/web/family/toddler-autumn-portrait-lg.webp"
+               alt="Young girl in a floral dress smiling softly against glowing orange autumn leaves"
+               width="1600" height="1067" loading="lazy" decoding="async" />
+          <div class="film-stamp">NATURAL LIGHT • AUTUMN SESSION</div>
+        </div>
+      </div>
+
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge grease-badge">★ Portrait Sessions</span>
+          <span class="badge">Newborn</span>
+          <span class="badge">Family & Children</span>
+        </div>
+        <h2 class="project-title">Newborn & Family: First Days to First Birthdays</h2>
+        <p class="project-summary">
+          Portrait sessions that follow little ones as they grow: soft macro newborn details, a styled first-birthday studio set, and golden autumn portraits full of falling leaves, finished in warm color and black and white.
+        </p>
 
         <div class="roles-delivered">
-          <span>SPECS:</span> Strobe Lighting Direction, Prop Styling, High-Res Retouching
+          <span>SESSIONS:</span> Newborn, Infant, First Birthday, Seasonal Outdoor Portraits
         </div>
 
-        <span class="view-case-link is-pending">Full gallery coming soon</span>
+        <a href="#roll-family" class="view-case-link">View the Newborn & Family Proof Sheet ↓</a>
+      </div>
+    </article>
+
+    <!-- Series 03: Pets & Animals -->
+    <article class="case-card" data-category="animals">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ ROLL 03</span>
+          <span class="film-stock">CANON 5D MK II • 50MM</span>
+          <span class="exposure-spec">f/4 • 1/200s • ISO 100</span>
+        </div>
+        <div class="media-container">
+          <div class="proof-stamp">● PROOF SELECT</div>
+          <img src="images/web/animals/python-pumpkin-lg.webp"
+               alt="White python coiled on top of a bright orange pumpkin against a dark textured backdrop"
+               width="1600" height="1067" loading="lazy" decoding="async" />
+          <div class="film-stamp">STYLED SET • SEASONAL</div>
+        </div>
+      </div>
+
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge grease-badge">★ Pet Portraits</span>
+          <span class="badge">Animals</span>
+          <span class="badge">Styled Sets</span>
+        </div>
+        <h2 class="project-title">Pets & Animals: Character Studies</h2>
+        <p class="project-summary">
+          Portraits that capture personality, from a brindle dog in warm morning light and a betta fish in fine macro detail to a styled autumn set pairing a white python with a pumpkin.
+        </p>
+
+        <div class="roles-delivered">
+          <span>KIT:</span> Canon 5D Mark II, EF 50mm f/1.8, EF 100mm f/2.8L Macro
+        </div>
+
+        <a href="#roll-animals" class="view-case-link">View the Pets & Animals Proof Sheet ↓</a>
+      </div>
+    </article>
+
+    <!-- Series 04: Landscapes & Cityscapes -->
+    <article class="case-card reverse" data-category="landscape">
+      <div class="card-visual">
+        <div class="film-rebate-strip">
+          <span class="rebate-code">▶ ROLL 04</span>
+          <span class="film-stock">CANON 5D MK II • 24MM</span>
+          <span class="exposure-spec">f/22 • 4s • ISO 100</span>
+        </div>
+        <div class="media-container">
+          <div class="proof-stamp">● PROOF SELECT</div>
+          <img src="images/web/landscapes/coast-sea-stacks-dusk-lg.webp"
+               alt="Long exposure of rocky sea stacks at dusk, the water smoothed to mist over boulders"
+               width="1200" height="800" loading="lazy" decoding="async" />
+          <div class="film-stamp">LONG EXPOSURE • PERSONAL SERIES</div>
+        </div>
+      </div>
+
+      <div class="card-info">
+        <div class="tag-row">
+          <span class="badge grease-badge">★ Personal Series</span>
+          <span class="badge">Landscapes</span>
+          <span class="badge">Cityscapes</span>
+        </div>
+        <h2 class="project-title">Landscapes & Cityscapes</h2>
+        <p class="project-summary">
+          Long exposures of sea stacks and rock pools at dusk alongside black-and-white studies of laneways, stairwells and city light: a personal series about patience, structure and time.
+        </p>
+
+        <div class="roles-delivered">
+          <span>TECHNIQUE:</span> Long Exposure (up to 54s), Light Trails, Black & White Conversion
+        </div>
+
+        <a href="#roll-landscape" class="view-case-link">View the Landscapes & Cityscapes Proof Sheet ↓</a>
       </div>
     </article>
 
   </main>
 
-  <!-- Expanded Darkroom Contact Sheet Gallery -->
-  <section class="contact-sheet-section">
+  <!-- ===== Proof Sheets (one per series) ===== -->
+
+  <!-- Roll 01: Weddings -->
+  <section id="roll-weddings" class="contact-sheet-section filter-section" data-category="weddings">
     <div class="section-header-wrap">
-      <div class="sheet-meta">ROLL ARCHIVE NO. 08 • BATCH SELECTION</div>
-      <h2 class="sheet-title">Silver Gelatin Contact Index</h2>
-      <p class="sheet-subtitle">Selected contact frames from physical darkroom proofs and field rolls.</p>
+      <div class="sheet-meta">ROLL 01 • WEDDINGS • 14 FRAMES</div>
+      <h2 class="sheet-title">Wedding Proof Sheet</h2>
+      <p class="sheet-subtitle">Select a frame to inspect it. Use ← → to move through the roll.</p>
     </div>
 
     <div class="contact-sheet">
-      <button type="button" class="contact-frame">
-        <span class="contact-thumb"><span>[ CANOPY PROOF 01 ]</span></span>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-greenhouse-ceremony-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-greenhouse-ceremony-sm.webp" alt="Guests watching a ceremony inside a glass greenhouse" loading="lazy" decoding="async" /></span>
       </button>
-      <button type="button" class="contact-frame select-frame">
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-umbrella-arrival-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-umbrella-arrival-sm.webp" alt="Father holding a clear umbrella over the bride as she arrives" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-aisle-walk-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-aisle-walk-sm.webp" alt="Bride walking down the aisle on her father's arm as guests look on" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-just-married-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-just-married-sm.webp" alt="Couple kissing behind a straw hat that reads 'just married'" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/weddings/wedding-golden-hour-lg.webp">
         <span class="contact-thumb">
-          <span>[ BARK DETAIL 02 ]</span>
+          <img src="images/web/weddings/wedding-golden-hour-sm.webp" alt="Bride and groom kissing in a field, backlit by golden-hour sun" loading="lazy" decoding="async" />
           <span class="grease-pencil-mark">● SELECT</span>
         </span>
       </button>
-      <button type="button" class="contact-frame">
-        <span class="contact-thumb"><span>[ MOSS SPECIMEN 03 ]</span></span>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-portrait-bw-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-portrait-bw-sm.webp" alt="Black and white portrait of the bride smiling at the groom" loading="lazy" decoding="async" /></span>
       </button>
-      <button type="button" class="contact-frame select-frame">
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-field-kiss-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-field-kiss-sm.webp" alt="Couple sharing a kiss in a sunlit meadow" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-groom-portrait-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-groom-portrait-sm.webp" alt="Groom laughing as he adjusts his pink bow tie" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-groomsmen-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-groomsmen-sm.webp" alt="Low-angle shot of the groomsmen in sunglasses against a blue sky" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-reception-barn-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-reception-barn-sm.webp" alt="Long reception tables set beneath string lights in a timber barn" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-favors-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-favors-sm.webp" alt="Rows of kraft-paper favor boxes on a table in a rustic reception room" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/weddings/wedding-father-daughter-dance-lg.webp">
         <span class="contact-thumb">
-          <span>[ LOW LIGHT 04 ]</span>
+          <img src="images/web/weddings/wedding-father-daughter-dance-sm.webp" alt="Black and white image of the bride embracing her father during their dance" loading="lazy" decoding="async" />
           <span class="grease-pencil-mark">● SELECT</span>
         </span>
       </button>
-      <button type="button" class="contact-frame">
-        <span class="contact-thumb"><span>[ TEXTURE 05 ]</span></span>
+      <button type="button" class="contact-frame" data-full="images/web/weddings/wedding-mother-son-dance-lg.webp">
+        <span class="contact-thumb"><img src="images/web/weddings/wedding-mother-son-dance-sm.webp" alt="Groom and his mother sharing an emotional dance" loading="lazy" decoding="async" /></span>
       </button>
-      <button type="button" class="contact-frame">
-        <span class="contact-thumb"><span>[ HORIZON 06 ]</span></span>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/weddings/wedding-dock-sunset-lg.webp">
+        <span class="contact-thumb">
+          <img src="images/web/weddings/wedding-dock-sunset-sm.webp" alt="Couple seated at the end of a lake dock at sunset" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Roll 02: Newborn & Family -->
+  <section id="roll-family" class="contact-sheet-section filter-section" data-category="family">
+    <div class="section-header-wrap">
+      <div class="sheet-meta">ROLL 02 • NEWBORN & FAMILY • 12 FRAMES</div>
+      <h2 class="sheet-title">Newborn & Family Proof Sheet</h2>
+      <p class="sheet-subtitle">Newborn details, a first-birthday studio set, and autumn portraits. Canon 5D Mark II and Mark IV.</p>
+    </div>
+
+    <div class="contact-sheet">
+      <button type="button" class="contact-frame select-frame" data-full="images/web/family/newborn-feet-bw-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb">
+          <img src="images/web/family/newborn-feet-bw-sm.webp" alt="Black and white image of a newborn's feet cradled in a parent's hands" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/newborn-profile-lg.webp" data-spec="EF 100mm Macro • f/2.8 • 1/200s • ISO 400">
+        <span class="contact-thumb"><img src="images/web/family/newborn-profile-sm.webp" alt="Close macro portrait of a sleeping newborn's face and tiny fingers" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/newborn-hand-bw-lg.webp" data-spec="EF 100mm Macro • f/2.8 • 1/200s • ISO 400">
+        <span class="contact-thumb"><img src="images/web/family/newborn-hand-bw-sm.webp" alt="Black and white macro of a newborn's hand beside their lips" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/newborn-sleeping-lg.webp" data-spec="EF 50mm • f/2.5 • 1/200s • ISO 400">
+        <span class="contact-thumb"><img src="images/web/family/newborn-sleeping-sm.webp" alt="Newborn sleeping on white linen, hand tucked under chin" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/newborn-blanket-lg.webp" data-spec="EF 100mm Macro • f/2.8 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/family/newborn-blanket-sm.webp" alt="Knitted blanket with a ribbon rose in focus, a sleeping newborn soft behind it" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/family/newborn-curled-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb">
+          <img src="images/web/family/newborn-curled-sm.webp" alt="Newborn baby asleep, curled on a soft white blanket" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/baby-headband-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/family/baby-headband-sm.webp" alt="Baby in a peach headband gazing to the side while held on a parent's shoulder" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/first-birthday-seated-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/family/first-birthday-seated-sm.webp" alt="Baby in a sparkly 'One' top and pink tutu seated before a painted floral backdrop" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/first-birthday-closeup-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/family/first-birthday-closeup-sm.webp" alt="Close portrait of a first-birthday girl in a lace top, fingers in her mouth" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/family/toddler-autumn-portrait-lg.webp" data-spec="5D Mark IV • EF 100mm Macro • f/3.2 • 1/2000s • ISO 800">
+        <span class="contact-thumb">
+          <img src="images/web/family/toddler-autumn-portrait-sm.webp" alt="Young girl in a floral dress smiling softly against glowing orange autumn leaves" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/toddler-autumn-standing-lg.webp" data-spec="5D Mark IV • EF 100mm Macro • f/3.5 • 1/200s • ISO 400">
+        <span class="contact-thumb"><img src="images/web/family/toddler-autumn-standing-sm.webp" alt="Young girl in a floral dress and pink boots standing shyly on fallen leaves" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/family/toddler-autumn-leaves-lg.webp" data-spec="5D Mark IV • EF 100mm Macro • f/3.5 • 1/640s • ISO 800">
+        <span class="contact-thumb"><img src="images/web/family/toddler-autumn-leaves-sm.webp" alt="Young girl running down a wooded path as autumn leaves fall around her" loading="lazy" decoding="async" /></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Roll 03: Pets & Animals -->
+  <section id="roll-animals" class="contact-sheet-section filter-section" data-category="animals">
+    <div class="section-header-wrap">
+      <div class="sheet-meta">ROLL 03 • PETS & ANIMALS • 06 FRAMES</div>
+      <h2 class="sheet-title">Pets & Animals Proof Sheet</h2>
+      <p class="sheet-subtitle">Outdoor pet portraits, macro detail, and a styled seasonal set.</p>
+    </div>
+
+    <div class="contact-sheet">
+      <button type="button" class="contact-frame select-frame" data-full="images/web/animals/dog-brindle-sitting-lg.webp" data-spec="EF 50mm • f/1.8 • 1/180s • ISO 100">
+        <span class="contact-thumb">
+          <img src="images/web/animals/dog-brindle-sitting-sm.webp" alt="Happy brindle dog sitting in the grass, ears up and mouth open" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/animals/dog-brindle-closeup-lg.webp" data-spec="EF 50mm • f/1.8 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/animals/dog-brindle-closeup-sm.webp" alt="Close-up of a brindle dog looking up into the camera with amber eyes" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/animals/dog-brindle-profile-lg.webp" data-spec="EF 50mm • f/1.8 • 1/180s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/animals/dog-brindle-profile-sm.webp" alt="Profile of a brindle dog panting happily against a soft green background" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/animals/betta-fish-macro-lg.webp" data-spec="EF 100mm Macro • f/2.8 • 1/750s • ISO 800">
+        <span class="contact-thumb">
+          <img src="images/web/animals/betta-fish-macro-sm.webp" alt="Macro of a blue, white and red betta fish with flowing fins" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/animals/python-pumpkin-overhead-lg.webp" data-spec="EF 50mm • f/4 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/animals/python-pumpkin-overhead-sm.webp" alt="Overhead view of a white python coiled around a pumpkin stem" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/animals/python-pumpkin-lg.webp" data-spec="EF 50mm • f/4 • 1/200s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/animals/python-pumpkin-sm.webp" alt="White python coiled on top of a bright orange pumpkin against a dark textured backdrop" loading="lazy" decoding="async" /></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Roll 04: Landscapes & Cityscapes -->
+  <section id="roll-landscape" class="contact-sheet-section filter-section" data-category="landscape">
+    <div class="section-header-wrap">
+      <div class="sheet-meta">ROLL 04 • LANDSCAPES & CITYSCAPES • 08 FRAMES</div>
+      <h2 class="sheet-title">Landscapes & Cityscapes Proof Sheet</h2>
+      <p class="sheet-subtitle">Long exposures, light trails, and black-and-white architecture.</p>
+    </div>
+
+    <div class="contact-sheet">
+      <button type="button" class="contact-frame select-frame" data-full="images/web/landscapes/coast-sea-stacks-dusk-lg.webp" data-spec="24mm • f/22 • 4s • ISO 100">
+        <span class="contact-thumb">
+          <img src="images/web/landscapes/coast-sea-stacks-dusk-sm.webp" alt="Long exposure of rocky sea stacks at dusk, the water smoothed to mist over boulders" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/coast-long-exposure-lg.webp" data-spec="24mm • f/13 • 54s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/landscapes/coast-long-exposure-sm.webp" alt="Fifty-four second exposure of a green coastal gully opening onto a misty sea" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/coast-rock-pools-lg.webp" data-spec="28mm • f/22 • 1/6s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/landscapes/coast-rock-pools-sm.webp" alt="Waves pouring off rock shelves under a cloud-filled sky" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/tree-sunrise-lg.webp" data-spec="EF 24-105mm @ 24mm • f/4 • 1/4000s • ISO 400">
+        <span class="contact-thumb"><img src="images/web/landscapes/tree-sunrise-sm.webp" alt="Lone gum tree in a grassy park with the sun flaring on the horizon" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame select-frame" data-full="images/web/landscapes/street-light-trails-lg.webp" data-spec="24mm • f/4 • 10s • ISO 100">
+        <span class="contact-thumb">
+          <img src="images/web/landscapes/street-light-trails-sm.webp" alt="Blue car light trails sweeping past a corner building at night" loading="lazy" decoding="async" />
+          <span class="grease-pencil-mark">● SELECT</span>
+        </span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/laneway-lg.webp" data-spec="35mm • f/4 • 1/90s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/landscapes/laneway-sm.webp" alt="Narrow city laneway lined with old stone buildings, a red door at the far end" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/stairs-bw-lg.webp" data-spec="80mm • f/4 • 1/30s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/landscapes/stairs-bw-sm.webp" alt="Abstract black and white study of concrete stairwell diagonals" loading="lazy" decoding="async" /></span>
+      </button>
+      <button type="button" class="contact-frame" data-full="images/web/landscapes/looking-up-lg.webp" data-spec="24mm • f/5.6 • 1/125s • ISO 100">
+        <span class="contact-thumb"><img src="images/web/landscapes/looking-up-sm.webp" alt="Looking straight up between buildings at a grid of sky-blue windows" loading="lazy" decoding="async" /></span>
       </button>
     </div>
   </section>
@@ -155,8 +426,8 @@
   <footer class="site-footer">
     <div class="footer-wrap">
       <div>
-        <h3>Commission inquiries or print licensing?</h3>
-        <p>Available for commercial still-life assignments, editorial commissions, and darkroom prints.</p>
+        <h3>Planning a wedding, session, or shoot?</h3>
+        <p>Available for weddings, newborn and family sessions, pet portraits, and commercial photography.</p>
       </div>
       <a href="mailto:emmajaderoy@gmail.com" class="footer-btn">Initiate Dialogue</a>
     </div>
