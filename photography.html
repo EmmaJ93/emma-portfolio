@@ -4,13 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photography & Archival Prints | Archive</title>
+  <meta name="description" content="Analog and digital photography: studio still life, editorial print series, and silver gelatin darkroom proofs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Photography & Archival Prints" />
+  <meta property="og:description" content="Studio still life, editorial print series, and silver gelatin darkroom proofs." />
+  <meta name="theme-color" content="#123524" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="site-header">
-    <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">STUDIO / ARCHIVE</a></div>
+    <div class="logo"><a href="index.html">STUDIO / ARCHIVE</a></div>
     <nav class="nav-links">
       <a href="index.html">Work</a>
       <a href="lifecycle.html">Lifecycle & Email</a>
@@ -29,10 +35,10 @@
     </p>
 
     <div class="filter-bar">
-      <button class="filter-btn active">All Proofs</button>
-      <button class="filter-btn">Commercial & Product</button>
-      <button class="filter-btn">Editorial Series</button>
-      <button class="filter-btn">Landscape & Botanical</button>
+      <button type="button" class="filter-btn active" data-filter="all">All Proofs</button>
+      <button type="button" class="filter-btn" data-filter="commercial">Commercial & Product</button>
+      <button type="button" class="filter-btn" data-filter="editorial">Editorial Series</button>
+      <button type="button" class="filter-btn" data-filter="botanical">Landscape & Botanical</button>
     </div>
   </section>
 
@@ -58,7 +64,7 @@
   <!-- Featured Photo Series -->
   <main class="case-study-feed">
 
-    <article class="case-card">
+    <article class="case-card" data-category="commercial botanical">
       <div class="card-visual">
         <div class="film-rebate-strip">
           <span class="rebate-code">▶ 01A</span>
@@ -100,7 +106,7 @@
           <span>SPECS:</span> Strobe Lighting Direction, Prop Styling, High-Res Retouching
         </div>
 
-        <a href="#" class="view-case-link">Open Full Gallery →</a>
+        <span class="view-case-link is-pending">Full gallery coming soon</span>
       </div>
     </article>
 
@@ -115,30 +121,30 @@
     </div>
 
     <div class="contact-sheet">
-      <div class="contact-frame">
-        <div class="contact-thumb"><span>[ CANOPY PROOF 01 ]</span></div>
-      </div>
-      <div class="contact-frame select-frame">
-        <div class="contact-thumb">
+      <button type="button" class="contact-frame">
+        <span class="contact-thumb"><span>[ CANOPY PROOF 01 ]</span></span>
+      </button>
+      <button type="button" class="contact-frame select-frame">
+        <span class="contact-thumb">
           <span>[ BARK DETAIL 02 ]</span>
           <span class="grease-pencil-mark">● SELECT</span>
-        </div>
-      </div>
-      <div class="contact-frame">
-        <div class="contact-thumb"><span>[ MOSS SPECIMEN 03 ]</span></div>
-      </div>
-      <div class="contact-frame select-frame">
-        <div class="contact-thumb">
+        </span>
+      </button>
+      <button type="button" class="contact-frame">
+        <span class="contact-thumb"><span>[ MOSS SPECIMEN 03 ]</span></span>
+      </button>
+      <button type="button" class="contact-frame select-frame">
+        <span class="contact-thumb">
           <span>[ LOW LIGHT 04 ]</span>
           <span class="grease-pencil-mark">● SELECT</span>
-        </div>
-      </div>
-      <div class="contact-frame">
-        <div class="contact-thumb"><span>[ TEXTURE 05 ]</span></div>
-      </div>
-      <div class="contact-frame">
-        <div class="contact-thumb"><span>[ HORIZON 06 ]</span></div>
-      </div>
+        </span>
+      </button>
+      <button type="button" class="contact-frame">
+        <span class="contact-thumb"><span>[ TEXTURE 05 ]</span></span>
+      </button>
+      <button type="button" class="contact-frame">
+        <span class="contact-thumb"><span>[ HORIZON 06 ]</span></span>
+      </button>
     </div>
   </section>
 
@@ -149,9 +155,10 @@
         <h3>Commission inquiries or print licensing?</h3>
         <p>Available for commercial still-life assignments, editorial commissions, and darkroom prints.</p>
       </div>
-      <a href="mailto:your-email@example.com" class="footer-btn">Initiate Dialogue</a>
+      <a href="mailto:emmajaderoy@gmail.com" class="footer-btn">Initiate Dialogue</a>
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

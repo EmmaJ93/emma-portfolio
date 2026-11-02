@@ -5,7 +5,8 @@
 /* Alice (Display / Serif Titles) */
 @font-face {
   font-family: 'Alice';
-  src: url('fonts/Alice-Regular.ttf') format('truetype');
+  src: url('fonts/Alice-Regular.woff2') format('woff2'),
+       url('fonts/Alice-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +15,8 @@
 /* KoHo (Body / Technical / Navigation / Directory) */
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-ExtraLight.ttf') format('truetype');
+  src: url('fonts/KoHo-ExtraLight.woff2') format('woff2'),
+       url('fonts/KoHo-ExtraLight.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -22,7 +24,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-Light.ttf') format('truetype');
+  src: url('fonts/KoHo-Light.woff2') format('woff2'),
+       url('fonts/KoHo-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -30,7 +33,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-Regular.ttf') format('truetype');
+  src: url('fonts/KoHo-Regular.woff2') format('woff2'),
+       url('fonts/KoHo-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -38,7 +42,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-Italic.ttf') format('truetype');
+  src: url('fonts/KoHo-Italic.woff2') format('woff2'),
+       url('fonts/KoHo-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -46,7 +51,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-Medium.ttf') format('truetype');
+  src: url('fonts/KoHo-Medium.woff2') format('woff2'),
+       url('fonts/KoHo-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -54,7 +60,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-SemiBold.ttf') format('truetype');
+  src: url('fonts/KoHo-SemiBold.woff2') format('woff2'),
+       url('fonts/KoHo-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -62,7 +69,8 @@
 
 @font-face {
   font-family: 'KoHo';
-  src: url('fonts/KoHo-Bold.ttf') format('truetype');
+  src: url('fonts/KoHo-Bold.woff2') format('woff2'),
+       url('fonts/KoHo-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -77,8 +85,9 @@
   --color-plum:       #361219; /* Accent badges, frames, darkroom depth */
   --color-sage:       #98B5A7; /* Highlights, metrics, action states */
   --color-parchment:  #B5A198; /* Body text & subtle borders */
-  --color-safelight:  #b33939; /* Darkroom grease-pencil wax red */
-  
+  --color-safelight:  #b33939; /* Darkroom grease-pencil wax red (fills, borders, underlines) */
+  --color-safelight-text: #e06666; /* Lifted safelight red for small text: passes WCAG AA on dark surfaces */
+
   --font-display: 'Alice', Georgia, serif;
   --font-body:    'KoHo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -113,6 +122,16 @@ body::before {
   z-index: 0;
 }
 
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* Visible keyboard focus across all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 3px;
+}
+
 /* ==========================================================================
    4. NAVIGATION
    ========================================================================== */
@@ -123,6 +142,7 @@ body::before {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem 6%;
+  background-color: var(--color-forest);
   border-bottom: 1px solid rgba(181, 161, 152, 0.15);
 }
 
@@ -134,6 +154,18 @@ body::before {
   color: var(--color-sage);
 }
 
+.logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2rem;
+}
+
 .nav-links a {
   position: relative;
   font-family: var(--font-body);
@@ -141,7 +173,6 @@ body::before {
   font-size: 0.9rem;
   text-decoration: none;
   color: var(--color-parchment);
-  margin-left: 2rem;
   letter-spacing: 1px;
   transition: color 0.2s ease;
 }
@@ -230,7 +261,7 @@ body::before {
   font-size: 0.85rem;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .filter-btn:hover,
@@ -298,6 +329,26 @@ body::before {
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+/* Filter states (toggled by script.js) */
+.case-card.is-filtered-out {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.case-card[hidden] {
+  display: none;
+}
+
+.feed-empty {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--color-parchment);
+  padding: 3rem 2.5rem;
+  border: 1px dashed rgba(181, 161, 152, 0.3);
+  text-align: center;
+}
+
 .case-card.reverse {
   grid-template-columns: 1fr 1.2fr;
 }
@@ -308,7 +359,9 @@ body::before {
 /* Film Rebate Header Strip */
 .film-rebate-strip {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 4px 16px;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
@@ -364,7 +417,7 @@ body::before {
   font-weight: 700;
   font-size: 0.65rem;
   letter-spacing: 1.5px;
-  color: var(--color-safelight);
+  color: var(--color-safelight-text);
   background: rgba(13, 30, 21, 0.85);
   border: 1px solid var(--color-safelight);
   padding: 2px 8px;
@@ -385,6 +438,8 @@ body::before {
   font-size: 0.85rem;
   letter-spacing: 2px;
   color: var(--color-sage);
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .film-stamp {
@@ -417,7 +472,7 @@ body::before {
 
 .badge.grease-badge {
   background-color: var(--color-bark);
-  color: var(--color-safelight);
+  color: var(--color-safelight-text);
   border: 1px solid var(--color-safelight);
 }
 
@@ -495,6 +550,14 @@ body::before {
   border-color: var(--color-safelight);
 }
 
+/* Placeholder for case studies not yet written (not a link) */
+.view-case-link.is-pending {
+  color: var(--color-parchment);
+  border-bottom-style: dashed;
+  border-color: rgba(181, 161, 152, 0.4);
+  opacity: 0.8;
+}
+
 /* ==========================================================================
    8. CONTACT SHEET GALLERY
    ========================================================================== */
@@ -545,6 +608,12 @@ body::before {
 }
 
 .contact-frame {
+  /* Rendered as <button> for keyboard access: reset native button styles */
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
   position: relative;
   background: var(--color-plum);
   border: 1px solid rgba(181, 161, 152, 0.1);
@@ -554,7 +623,8 @@ body::before {
   cursor: pointer;
 }
 
-.contact-frame:hover {
+.contact-frame:hover,
+.contact-frame:focus-visible {
   transform: translateY(-2px);
   border-color: var(--color-sage);
 }
@@ -587,6 +657,7 @@ body::before {
   letter-spacing: 1px;
   color: var(--color-parchment);
   opacity: 0.7;
+  text-align: center;
 }
 
 .select-frame {
@@ -668,13 +739,16 @@ body::before {
   justify-content: center;
   z-index: 1000;
   opacity: 0;
+  visibility: hidden; /* removes closed modal from tab order & screen readers */
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
 .darkroom-lightbox.is-active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+  transition: opacity 0.25s ease, visibility 0s;
 }
 
 .lightbox-overlay {
@@ -768,11 +842,57 @@ body::before {
     align-items: flex-start;
     gap: 1.5rem;
   }
-  .nav-links a {
-    margin-left: 0;
-    margin-right: 1.2rem;
+  .nav-links {
+    gap: 0.75rem 1.2rem;
   }
   .photo-divider {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.75rem 6%;
+  }
+  .hero-section {
+    padding-top: 3.5rem;
+  }
+  .case-card {
+    padding: 1.25rem;
+    gap: 2rem;
+  }
+  .media-placeholder {
+    height: 260px;
+  }
+  .project-title {
+    font-size: 1.75rem;
+  }
+  .contact-sheet {
+    padding: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .contact-thumb {
+    height: 120px;
+  }
+  .lightbox-content {
+    padding: 1.5rem 1.1rem;
+  }
+  .lightbox-placeholder {
+    height: 55vh;
+  }
+}
+
+/* Respect users who turn off motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .contact-frame:hover,
+  .contact-frame:focus-visible {
+    transform: none;
   }
 } 

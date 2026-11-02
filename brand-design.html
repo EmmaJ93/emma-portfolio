@@ -4,13 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brand & Visual Design | Archive</title>
+  <meta name="description" content="Brand identity and visual design case studies: identity systems, packaging, and omnichannel campaign collateral." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Brand & Visual Design" />
+  <meta property="og:description" content="Identity systems, packaging, and omnichannel campaign collateral." />
+  <meta name="theme-color" content="#123524" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="site-header">
-    <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">STUDIO / ARCHIVE</a></div>
+    <div class="logo"><a href="index.html">STUDIO / ARCHIVE</a></div>
     <nav class="nav-links">
       <a href="index.html">Work</a>
       <a href="lifecycle.html">Lifecycle & Email</a>
@@ -29,10 +35,10 @@
     </p>
 
     <div class="filter-bar">
-      <button class="filter-btn active">All Work</button>
-      <button class="filter-btn">Identity Systems</button>
-      <button class="filter-btn">Digital Collateral</button>
-      <button class="filter-btn">Packaging & Print</button>
+      <button type="button" class="filter-btn active" data-filter="all">All Work</button>
+      <button type="button" class="filter-btn" data-filter="identity">Identity Systems</button>
+      <button type="button" class="filter-btn" data-filter="digital">Digital Collateral</button>
+      <button type="button" class="filter-btn" data-filter="print">Packaging & Print</button>
     </div>
   </section>
 
@@ -46,7 +52,7 @@
   <!-- Projects List -->
   <main class="case-study-feed">
 
-    <article class="case-card">
+    <article class="case-card" data-category="identity print">
       <div class="card-visual">
         <div class="film-rebate-strip">
           <span class="rebate-code">▶ BRAND 01</span>
@@ -88,11 +94,11 @@
           <span>DELIVERABLES:</span> Logo Suites, Custom Type Treatments, Printed Materials, Social & Campaign Toolkits
         </div>
 
-        <a href="#" class="view-case-link">View Full Brand System →</a>
+        <span class="view-case-link is-pending">Full brand system coming soon</span>
       </div>
     </article>
 
-    <article class="case-card reverse">
+    <article class="case-card reverse" data-category="digital">
       <div class="card-visual">
         <div class="film-rebate-strip">
           <span class="rebate-code">▶ BRAND 02</span>
@@ -132,7 +138,7 @@
           <span>DELIVERABLES:</span> Static & Motion Social Graphics, Conversion Landing Page Design, Ad Variations
         </div>
 
-        <a href="#" class="view-case-link">Explore Campaign Assets →</a>
+        <span class="view-case-link is-pending">Campaign assets coming soon</span>
       </div>
     </article>
 
@@ -145,9 +151,10 @@
         <h3>Need a comprehensive visual identity or creative system?</h3>
         <p>Available for select brand design systems and campaign creative direction.</p>
       </div>
-      <a href="mailto:your-email@example.com" class="footer-btn">Initiate Dialogue</a>
+      <a href="mailto:emmajaderoy@gmail.com" class="footer-btn">Initiate Dialogue</a>
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
