@@ -1,19 +1,9 @@
-/* ==========================================================================
-   PORTFOLIO INTERACTIVE CONTROLLER
-   - Category filtering (any page with .filter-btn + .case-card / .filter-section)
-   - Darkroom Loupe / Proof Inspector lightbox (any page with .contact-frame)
-   ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const FADE_MS = 250;
 
-  /* ------------------------------------------------------------------------
-     1. CATEGORY FILTERING
-     Filters .case-card items and any .filter-section (e.g. a series proof
-     sheet) by their data-category against the button's data-filter.
-     ------------------------------------------------------------------------ */
+  // Category filters: show items whose data-category matches the button
   const filterButtons = document.querySelectorAll('.filter-btn');
   const filterItems = document.querySelectorAll('.case-card, .filter-section');
   const feed = document.querySelector('.case-study-feed');
@@ -71,15 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ------------------------------------------------------------------------
-     2. DARKROOM CONTACT SHEET LIGHTBOX INSPECTOR
-     Frame markup:
-       <button class="contact-frame" data-full="large.webp"
-               data-caption="..." data-spec="...">
-         <span class="contact-thumb"><img src="small.webp" alt="..."></span>
-       </button>
-     Frames without an <img> fall back to the placeholder text.
-     ------------------------------------------------------------------------ */
+  // Lightbox for .contact-frame buttons (data-full, data-spec, data-tall)
   const contactFrames = document.querySelectorAll('.contact-frame');
 
   if (contactFrames.length > 0) {
