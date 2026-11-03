@@ -96,9 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="lightbox-code">FRAME INSPECTOR</span>
         </div>
         <div class="lightbox-viewer">
-          <img class="lightbox-img" alt="" hidden />
-          <div class="lightbox-placeholder">
-            <span class="lightbox-title">[ SPECIMEN PREVIEW ]</span>
+          <div class="lightbox-stage">
+            <img class="lightbox-img" alt="" hidden />
+            <div class="lightbox-placeholder">
+              <span class="lightbox-title">[ SPECIMEN PREVIEW ]</span>
+            </div>
           </div>
           <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous frame">←</button>
           <button type="button" class="lightbox-nav lightbox-next" aria-label="Next frame">→</button>
@@ -116,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = modal.querySelector('.lightbox-next');
     const overlay = modal.querySelector('.lightbox-overlay');
     const lbImg = modal.querySelector('.lightbox-img');
+    const stage = modal.querySelector('.lightbox-stage');
     const placeholder = modal.querySelector('.lightbox-placeholder');
     const titleTarget = modal.querySelector('.lightbox-title');
     const codeTarget = modal.querySelector('.lightbox-code');
@@ -132,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const frameLabel = (frame) => {
       const img = frame.querySelector('img');
       return frame.dataset.caption
+        || frame.querySelector('.frame-caption')?.textContent.trim()
         || img?.alt
         || frame.querySelector('.contact-thumb span')?.textContent.trim()
         || 'Proof';
@@ -144,8 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const expNumber = String(index + 1).padStart(2, '0');
       const isSelect = frame.classList.contains('select-frame');
       const section = frame.closest('section');
-      const sheetMeta = section?.querySelector('.sheet-meta')?.textContent.trim();
+      const sheetMeta = frame.parentElement.dataset.label
+        || section?.querySelector('.sheet-meta')?.textContent.trim();
       const thumbImg = frame.querySelector('img');
+
+      // Full-length emails (data-tall) scroll inside the viewer
+      modal.classList.toggle('is-tall', 'tall' in frame.dataset);
+      stage.scrollTop = 0;
 
       if (thumbImg) {
         lbImg.src = frame.dataset.full || thumbImg.src;
