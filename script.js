@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (filterButtons.length > 0 && filterItems.length > 0) {
     const emptyState = document.createElement('p');
     emptyState.className = 'feed-empty';
-    emptyState.textContent = 'Nothing on this roll yet. New work in this category is being developed.';
+    emptyState.textContent = 'Nothing here yet. New work in this category is on the way.';
     emptyState.hidden = true;
     feed?.appendChild(emptyState);
 
@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.innerHTML = `
       <div class="lightbox-overlay"></div>
       <div class="lightbox-content">
-        <button type="button" class="lightbox-close" aria-label="Close inspector">✕</button>
+        <button type="button" class="lightbox-close" aria-label="Close">✕</button>
         <div class="lightbox-header">
-          <span class="lightbox-code">FRAME INSPECTOR</span>
+          <span class="lightbox-code">VIEWER</span>
         </div>
         <div class="lightbox-viewer">
           <div class="lightbox-stage">
@@ -110,6 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastTrigger = null;
     let currentFrame = null;
 
+    // Focus pull: replay the soft-to-sharp animation each time a photo loads
+    const pullFocus = () => {
+      if (modal.classList.contains('is-tall')) return;
+      lbImg.classList.remove('is-focusing');
+      void lbImg.offsetWidth;
+      lbImg.classList.add('is-focusing');
+    };
+    lbImg.addEventListener('load', pullFocus);
+
     // Frames in the same sheet as the given frame (for prev/next)
     const siblingsOf = (frame) =>
       Array.from(frame.parentElement.querySelectorAll('.contact-frame'));
@@ -120,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         || frame.querySelector('.frame-caption')?.textContent.trim()
         || img?.alt
         || frame.querySelector('.contact-thumb span')?.textContent.trim()
-        || 'Proof';
+        || 'Image';
     };
 
     const showFrame = (frame) => {
@@ -128,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const sheetFrames = siblingsOf(frame);
       const index = sheetFrames.indexOf(frame);
       const expNumber = String(index + 1).padStart(2, '0');
-      const isSelect = frame.classList.contains('select-frame');
       const section = frame.closest('section');
       const sheetMeta = frame.parentElement.dataset.label
         || section?.querySelector('.sheet-meta')?.textContent.trim();
@@ -139,10 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
       stage.scrollTop = 0;
 
       if (thumbImg) {
-        lbImg.src = frame.dataset.full || thumbImg.src;
+        const src = frame.dataset.full || thumbImg.src;
+        const sameImage = lbImg.getAttribute('src') === src;
+        lbImg.src = src;
         lbImg.alt = thumbImg.alt;
         lbImg.hidden = false;
         placeholder.hidden = true;
+        // Reopening the same photo fires no load event, so replay it here
+        if (sameImage && lbImg.complete) pullFocus();
       } else {
         lbImg.hidden = true;
         lbImg.removeAttribute('src');
@@ -150,8 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         titleTarget.textContent = frameLabel(frame);
       }
 
-      codeTarget.textContent = `EXP ${expNumber} / ${String(sheetFrames.length).padStart(2, '0')}`
-        + (isSelect ? ' • PROOF SELECT' : '')
+      codeTarget.textContent = `${expNumber} / ${String(sheetFrames.length).padStart(2, '0')}`
         + (sheetMeta ? ` • ${sheetMeta}` : '');
       captionTarget.textContent = frameLabel(frame);
       specTarget.textContent = frame.dataset.spec || '';
@@ -211,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactFrames.forEach((frame) => {
       const index = siblingsOf(frame).indexOf(frame);
-      frame.setAttribute('aria-label', `Inspect exposure ${index + 1}: ${frameLabel(frame)}`);
+      frame.setAttribute('aria-label', `View item ${index + 1}: ${frameLabel(frame)}`);
       frame.addEventListener('click', () => openModal(frame));
     });
   }
