@@ -228,3 +228,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// Video posters: load the YouTube player only when someone presses play
+document.querySelectorAll('.video-poster').forEach((poster) => {
+  poster.addEventListener('click', (e) => {
+    e.preventDefault();
+    const iframe = document.createElement('iframe');
+    iframe.className = 'video-embed';
+    iframe.src = `https://www.youtube-nocookie.com/embed/${poster.dataset.video}?autoplay=1&rel=0`;
+    iframe.title = poster.dataset.title;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    poster.replaceWith(iframe);
+    iframe.focus();
+  });
+});
